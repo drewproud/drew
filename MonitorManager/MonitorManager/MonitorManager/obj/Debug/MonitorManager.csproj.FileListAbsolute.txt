@@ -1,0 +1,9 @@
+E:\Dev\drew\MonitorManager\MonitorManager\MonitorManager\bin\Debug\MonitorManager.exe.config
+E:\Dev\drew\MonitorManager\MonitorManager\MonitorManager\bin\Debug\MonitorManager.exe
+E:\Dev\drew\MonitorManager\MonitorManager\MonitorManager\bin\Debug\MonitorManager.pdb
+E:\Dev\drew\MonitorManager\MonitorManager\MonitorManager\obj\Debug\MonitorManager.csprojResolveAssemblyReference.cache
+E:\Dev\drew\MonitorManager\MonitorManager\MonitorManager\obj\Debug\MonitorManager.Form1.resources
+E:\Dev\drew\MonitorManager\MonitorManager\MonitorManager\obj\Debug\MonitorManager.Properties.Resources.resources
+E:\Dev\drew\MonitorManager\MonitorManager\MonitorManager\obj\Debug\MonitorManager.csproj.GenerateResource.Cache
+E:\Dev\drew\MonitorManager\MonitorManager\MonitorManager\obj\Debug\MonitorManager.exe
+E:\Dev\drew\MonitorManager\MonitorManager\MonitorManager\obj\Debug\MonitorManager.pdb
