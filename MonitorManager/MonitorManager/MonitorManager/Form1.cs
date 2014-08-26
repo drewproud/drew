@@ -38,6 +38,8 @@ namespace MonitorManager
 
         public List<ComboBox> comboBoxList = new List<ComboBox>();
 
+        // make internal things not public
+        
         public void AddComboToList (ComboBox cBox)
         {
             if (!comboBoxList.Any(a => a.Name == cBox.Name))
