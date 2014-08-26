@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.Standard = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.leftMonitor = new System.Windows.Forms.ComboBox();
+            this.mainMonitor = new System.Windows.Forms.ComboBox();
+            this.rightMonitor = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // Standard
@@ -43,33 +44,43 @@
             this.Standard.UseVisualStyleBackColor = true;
             this.Standard.Click += new System.EventHandler(this.button1_Click);
             // 
-            // comboBox1
+            // leftMonitor
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(66, 32);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(232, 21);
-            this.comboBox1.TabIndex = 1;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.leftMonitor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.leftMonitor.FormattingEnabled = true;
+            this.leftMonitor.Location = new System.Drawing.Point(66, 32);
+            this.leftMonitor.Name = "leftMonitor";
+            this.leftMonitor.Size = new System.Drawing.Size(232, 21);
+            this.leftMonitor.TabIndex = 1;
+            this.leftMonitor.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // comboBox2
+            // mainMonitor
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(66, 74);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(232, 21);
-            this.comboBox2.TabIndex = 2;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.mainMonitor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.mainMonitor.FormattingEnabled = true;
+            this.mainMonitor.Location = new System.Drawing.Point(66, 74);
+            this.mainMonitor.Name = "mainMonitor";
+            this.mainMonitor.Size = new System.Drawing.Size(232, 21);
+            this.mainMonitor.TabIndex = 2;
+            this.mainMonitor.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            // 
+            // rightMonitor
+            // 
+            this.rightMonitor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.rightMonitor.FormattingEnabled = true;
+            this.rightMonitor.Location = new System.Drawing.Point(66, 117);
+            this.rightMonitor.Name = "rightMonitor";
+            this.rightMonitor.Size = new System.Drawing.Size(232, 21);
+            this.rightMonitor.TabIndex = 3;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(355, 235);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.rightMonitor);
+            this.Controls.Add(this.mainMonitor);
+            this.Controls.Add(this.leftMonitor);
             this.Controls.Add(this.Standard);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -81,8 +92,9 @@
         #endregion
 
         private System.Windows.Forms.Button Standard;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox leftMonitor;
+        private System.Windows.Forms.ComboBox mainMonitor;
+        private System.Windows.Forms.ComboBox rightMonitor;
     }
 }
 

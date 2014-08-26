@@ -13,8 +13,7 @@ namespace MonitorManager
     public partial class Form1 : Form
     {
 
-        // It hangs after I select the second monitor
-
+        // Make sure these match up with the combobox names
         private Dictionary<string, string> monitorList = new Dictionary<string, string>
         {
             {"leftMonitor", ""},
@@ -26,8 +25,8 @@ namespace MonitorManager
         {
             InitializeComponent();
 
-            InitializeCombo(comboBox1);
-            InitializeCombo(comboBox2);
+            InitializeCombo(leftMonitor);
+            InitializeCombo(mainMonitor);
 
         }
 
@@ -35,6 +34,7 @@ namespace MonitorManager
         {
             List<string> thisList = (List<string>)Screen.AllScreens.Select(hello => hello.DeviceName).ToList();
             thisList.Add("<None>");
+            thisList.Add("");
             return thisList;
         }
 
@@ -43,6 +43,10 @@ namespace MonitorManager
             get { return monitorList; }
         }
 
+        public void SetMonitorListValue(ComboBox combo)
+        {
+            monitorList[combo.Name] = combo.Text;
+        }
         private void InitializeCombo(ComboBox combo)
         {
             // Creates the list of all screens attached to the computer
@@ -78,6 +82,7 @@ namespace MonitorManager
                 {
                     if (cBox.Name != combo.Name)
                     {
+                        SetMonitorListValue(combo as ComboBox);
                         InitializeCombo(combo as ComboBox);
                     }
                 }
@@ -128,12 +133,12 @@ namespace MonitorManager
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            InitializeOtherCombos(comboBox1);
+            InitializeOtherCombos(leftMonitor);
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            InitializeOtherCombos(comboBox2);
+            InitializeOtherCombos(mainMonitor);
         }
     }
 }
