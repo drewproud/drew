@@ -72,6 +72,7 @@
             this.rightMonitor.Name = "rightMonitor";
             this.rightMonitor.Size = new System.Drawing.Size(232, 21);
             this.rightMonitor.TabIndex = 3;
+            this.rightMonitor.SelectedIndexChanged += new System.EventHandler(this.rightMonitor_SelectedIndexChanged);
             // 
             // Form1
             // 

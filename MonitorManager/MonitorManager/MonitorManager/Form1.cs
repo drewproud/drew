@@ -14,20 +14,36 @@ namespace MonitorManager
     {
 
         // Make sure these match up with the combobox names
-        private Dictionary<string, string> monitorList = new Dictionary<string, string>
+        private Dictionary<string, string> monitorSelection = new Dictionary<string, string>
         {
             {"leftMonitor", ""},
             {"mainMonitor",""},
             {"rightMonitor", ""}
         };
 
+
         public Form1()
         {
             InitializeComponent();
 
+            MonitorList = GetMonitorList();
+
             InitializeCombo(leftMonitor);
             InitializeCombo(mainMonitor);
+            InitializeCombo(rightMonitor);
 
+        }
+
+        public List<string> MonitorList = new List<string>();
+
+        public List<ComboBox> comboBoxList = new List<ComboBox>();
+
+        public void AddComboToList (ComboBox cBox)
+        {
+            if (!comboBoxList.Any(a => a.Name == cBox.Name))
+            {
+                comboBoxList.Add(cBox);
+            }
         }
 
         public List<string> GetMonitorList()
@@ -38,62 +54,76 @@ namespace MonitorManager
             return thisList;
         }
 
-        public Dictionary<string, string> MonitorList
+        public Dictionary<string, string> MonitorSelection
         {
-            get { return monitorList; }
+            get { return monitorSelection; }
         }
 
         public void SetMonitorListValue(ComboBox combo)
         {
-            monitorList[combo.Name] = combo.Text;
+            monitorSelection[combo.Name] = combo.Text;
         }
+
         private void InitializeCombo(ComboBox combo)
         {
             // Creates the list of all screens attached to the computer
             List<string> screens = GetMonitorList();
+            AddComboToList(combo);
+            ChangeComboMembers(combo);
 
-            string currentText = combo.Text;
-
-            // Clear all existing items in the current combobox
-            combo.Items.Clear();
-
-            Dictionary<string, string> mList = this.monitorList;
-
-            // Add the screens available to the combobox that are not used in any other boxes
-            foreach (string mName in screens)
-            {
-                if (!mList.Values.Any(mlist => mlist.Equals(mName)))
-                {
-                    combo.Items.Add(mName);
-                }
-            }
-
-            // Reset it to the original selection
-            combo.Text = currentText;
         }
 
         private void InitializeOtherCombos(ComboBox cBox)
         {
-            Dictionary<string, string> mDict = this.monitorList; 
-
-            foreach (Control combo in this.Controls)
+            foreach (ComboBox combo in comboBoxList)
             {
+                MessageBox.Show(combo.Name);
+
+                // Loop through all comboboxes
                 if (combo is ComboBox)
                 {
-                    if (cBox.Name != combo.Name)
+
+                    // MessageBox.Show("Current: " + cBox.Name + "Changing:" + combo.Name);
+
+                    // Stores the combobox text
+                    SetMonitorListValue(combo as ComboBox);
+
+                    // Only change the values of comboboxes that were not the one currently being used
+                    if (combo.Name != cBox.Name)
                     {
-                        SetMonitorListValue(combo as ComboBox);
-                        InitializeCombo(combo as ComboBox);
+                        ChangeComboMembers(combo as ComboBox);
                     }
                 }
             }
         }
 
-
-        private void Form1_Load(object sender, EventArgs e)
+        private void ChangeComboMembers(ComboBox combo)
         {
+            // Remember what was in here before
+            string currentText = combo.Text;
 
+            MessageBox.Show("Changing:" + combo.Name + combo.Text);
+
+            // Clear all existing items in the current combobox
+            foreach (object item in combo.Items)
+            {
+                if (item.ToString() != currentText)
+                {
+                    combo.Items.Remove(item);
+                }
+            }
+
+            // Add the screens available to the combobox that are not used in any other boxes
+            foreach (string mName in MonitorList)
+            {
+                if (!(monitorSelection.Values.Any(value => value.Equals(mName))) && currentText != mName)
+                {
+                    combo.Items.Add(mName);
+                }
+            }
         }
+
+        private void Form1_Load(object sender, EventArgs e) {}
 
         public class NameValue
         {
@@ -133,12 +163,17 @@ namespace MonitorManager
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            InitializeOtherCombos(leftMonitor);
+            InitializeOtherCombos(sender as ComboBox);
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            InitializeOtherCombos(mainMonitor);
+            InitializeOtherCombos(sender as ComboBox);
+        }
+
+        private void rightMonitor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            InitializeOtherCombos(sender as ComboBox);
         }
     }
 }
